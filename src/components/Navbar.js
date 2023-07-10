@@ -4,6 +4,8 @@ import { themeToggle } from '../redux/navBar/navBarActions'
 
 function Navbar() {
     const theme = useSelector(state => state.navigationBar.themeButton)
+    const totalCartPrice = useSelector(state => state.items.cartPrice)
+
     const dispatch = useDispatch()
 
     const handleThemeBtn = () => {
@@ -11,9 +13,13 @@ function Navbar() {
     }
 
     return (
-        <div className='flex justify-between bg-green-300 font-bold font-mono py-5'>
+        <div className='flex justify-around items-center bg-green-700 font-bold font-mono py-5'>
             This is navigation bar
-            <div onClick={handleThemeBtn} className='cursor-pointer bg-blue-700 p-1'>{theme ? 'Light☀️' : 'Dark🌙' }</div>
+            <div onClick={handleThemeBtn} className='cursor-pointer bg-blue-500 p-1 rounded-md'>{theme ? 'Light☀️' : 'Dark🌙' }</div>
+            <div className='bg-blue-100 p-1 rounded-md'>
+                <div>Your Cart</div>
+                <div>Rs.{totalCartPrice}</div>
+            </div>
         </div>
     )
 }

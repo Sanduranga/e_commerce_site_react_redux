@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchThunk } from '../redux/items/itemActions'
-import { cart } from '../redux/items/itemActions'
+import { fetchThunk, totalCartPricePlus,addCart } from '../redux/items/itemActions'
 
 export default function Items() {
 
     const fetchdata = useSelector(state => state.items.itemList)
     const dispatch = useDispatch()
 
-    const[buyItems, setBuyItems] = useState([])
+    const[addItems, setAddItems] = useState([])
 
     useEffect(() => {
         dispatch(fetchThunk())
@@ -16,18 +15,20 @@ export default function Items() {
     }, [])
 
     useEffect(() => {
-        dispatch(cart(buyItems))
+        dispatch(addCart(addItems))
+        
         console.log('use Effect buyItem calling')
-    }, [buyItems])
+    }, [addItems])
 
     const handleAddBtn = (id,price,discount,name,image) => {
-        setBuyItems(preItems =>  [
+        setAddItems(preItems =>  [
             ...preItems,{
             id: id,
             price: price - discount,
             name: name,
             image: image,
         }])
+        dispatch(totalCartPricePlus(price-discount))
     }
     
     const mapping =  fetchdata.map((item,index) => {
