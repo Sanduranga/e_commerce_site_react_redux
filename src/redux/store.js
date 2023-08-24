@@ -3,6 +3,7 @@ import { navBarReduser } from "./navBar/navBarReduser"
 import thunk from "redux-thunk"
 import logger from "redux-logger"
 import { itemReduser } from "./items/itemReduser"
+import {composeWithDevTools} from 'redux-devtools-extension'
 
 
 const rootReduser = combineReducers({
@@ -11,7 +12,10 @@ const rootReduser = combineReducers({
 
 })
 
-const store = createStore(rootReduser,applyMiddleware(thunk,logger))
+const store = createStore(
+    rootReduser,
+    composeWithDevTools(applyMiddleware(thunk,logger))
+)
 
 
 

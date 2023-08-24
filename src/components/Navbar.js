@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { themeToggle } from '../redux/navBar/navBarActions'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     const theme = useSelector(state => state.navigationBar.themeButton)
@@ -17,8 +18,10 @@ function Navbar() {
             This is navigation bar
             <div onClick={handleThemeBtn} className='cursor-pointer bg-blue-500 p-1 rounded-md'>{theme ? 'Light☀️' : 'Dark🌙' }</div>
             <div className='bg-blue-100 p-1 rounded-md'>
-                <div>Your Cart</div>
-                <div>Rs.{totalCartPrice}</div>
+                <Link to={'/shopping_cart'}>
+                    <div>Your Cart</div>
+                    <div>Rs.{totalCartPrice}</div>
+                </Link>
             </div>
         </div>
     )
