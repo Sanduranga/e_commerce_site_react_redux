@@ -17,7 +17,7 @@ function App() {
     >
       <Navbar />
       <Routes>
-        <Route path="/e_commerce_site_react_redux" element={<Items />} />
+        <Route path="/e_commerce_site_react_redux/" element={<Items />} />
       </Routes>
       <Routes>
         <Route path="/shopping_cart" element={<ShoppingCart />} />
