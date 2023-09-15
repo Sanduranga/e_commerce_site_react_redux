@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <div className="flex justify-around items-center bg-green-700 font-bold font-mono py-5">
       <div className="text-3xl text-white">
-        <Link to={"/"}>E-COMMERCE SITE.js</Link>{" "}
+        <Link to={"/e_commerce_site_react_redux"}>E-COMMERCE SITE.js</Link>{" "}
       </div>
       <div
         onClick={handleThemeBtn}
